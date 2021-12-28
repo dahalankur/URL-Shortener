@@ -2,12 +2,13 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const shortURL = require('./models/shortURL')
-const app = express()
 const PORT = process.env.PORT || 8000
+const app = express()
 
 mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log("Connected to the database"))
+    .catch(err => console.error(err))
 
-// use ejs as the default view engine
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 

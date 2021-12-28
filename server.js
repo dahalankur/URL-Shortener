@@ -24,11 +24,13 @@ app.post('/shortenURL', async (req, res) => {
 
 app.get('/:shortURL', async (req, res) => {
     const url = await shortURL.findOne({ shortURL: req.params.shortURL })
-    if (url == null) return res.sendStatus(404)
-    url.clicks += 1
-    await url.save()
-
-    res.redirect(url.fullURL)
+    if (url == null) {
+        return res.sendStatus(404)
+    } else {
+        url.clicks += 1
+        await url.save()
+        res.redirect(url.fullURL)
+    }
 })  
 
 app.listen(PORT, () => console.log(`Running on port ${PORT}`))

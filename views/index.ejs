@@ -26,6 +26,7 @@
             <tr>
                 <th>Full URL</th>
                 <th>Short URL</th>
+                <th></th>
                 <th>Clicks</th>
             </tr>
         </thead>
@@ -36,7 +37,10 @@
                         <a href="<%= URL.fullURL %>"><%= URL.fullURL %></a>
                     </td>
                     <td>
-                        <a href="<%= URL.shortURL %>" style="padding-right: 2em;"><%= URL.shortURL %></a> <input type="button" name="copy" id="<%= URL.shortURL %>" value="Copy" class="btn btn-sm btn-outline-secondary"  onclick=copyToClipboard("<%= URL.shortURL %>")>
+                        <a href="<%= URL.shortURL %>" style="padding-right: 2em;"><%= URL.shortURL %></a>
+                    </td>
+                    <td>
+                        <input type="button" name="copy" id="<%= URL.shortURL %>" value="Copy" class="btn btn-sm btn-outline-secondary"  onclick=copyToClipboard("<%= URL.shortURL %>")>
                     </td>
                     <td>
                         <%= URL.clicks %>

@@ -21,7 +21,7 @@
             </div>
     </form>
 
-    <table class="table table-striped table-responsive">
+    <table class="table table-striped table-responsive" style="width: 100%;">
         <thead>
             <tr>
                 <th>Full URL</th>
@@ -36,7 +36,7 @@
                         <a href="<%= URL.fullURL %>"><%= URL.fullURL %></a>
                     </td>
                     <td>
-                        <a href="<%= URL.shortURL %>"><%= URL.shortURL %></a>
+                        <a href="<%= URL.shortURL %>" style="padding-right: 2em;"><%= URL.shortURL %></a> <input type="button" name="copy" id="<%= URL.shortURL %>" value="Copy" class="btn btn-sm btn-outline-secondary"  onclick=copyToClipboard("<%= URL.shortURL %>")>
                     </td>
                     <td>
                         <%= URL.clicks %>
@@ -49,5 +49,14 @@
     <div class="footer text-center" style="position: fixed; left: 0; bottom: 0; width: 100%; background-color: rgb(216, 233, 208); font-family: sans-serif;">
         <p>Ankur Dahal, 2021</p>
     </div>
+    <script>
+        function copyToClipboard(url) {
+            const shortURL = window.location.href + url
+            const copyBtn = document.getElementById(url)
+            navigator.clipboard.writeText(shortURL)
+                .then(copyBtn.value = "Copied")
+                .catch(console.error("Error copying the URL"))          
+        }
+    </script>
 </body>
 </html>
